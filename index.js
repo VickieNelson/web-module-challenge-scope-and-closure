@@ -26,10 +26,11 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  *
  * 1. What is the difference between counter1 and counter2?
+ *counter 1 is nested inside the counterMaker function so that entire formulations is then passes into counter 2 
+ 
+ * 2. Which of the two uses a closure? How can you tell? counter 1 has a closure because the gates are closed on that process and can be passed onto counter2
  *
- * 2. Which of the two uses a closure? How can you tell?
- *
- * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
+ * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? counter 1 is preferable when needed only inside the purpose of the counter maker function, counter2 can be uses alone within the overal function but still pass in info from above it inside the function.
  *
  */
 

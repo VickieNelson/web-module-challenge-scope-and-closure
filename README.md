@@ -67,8 +67,14 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+closure is at Line 58 because that is when the process finishes
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+the value of the dice could be different
+
 c. What is the lexical scope of `newRoll`?
+
+newRoll belongs to personalDice
 
 ### Task 3 - Stretch Goals
 
