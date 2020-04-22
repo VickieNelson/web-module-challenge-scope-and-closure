@@ -90,24 +90,42 @@ return an object that contains the final score for Home and Away teams
   //this is variable that the information is passed to
   let homeTeam = [];
   let awayTeam = [];
-  const totalScore = { "Home": 0, "Away": 0 };
+  //total score stored as obj and const
+  const totalScore = { Home: 0, Away: 0 };
 
-  homeTeam.reduce((inning, num) => {
-    homeTeam[0] = totalScore["Home"];
+  //for loop start at 1 represents inning number
+  for (let i = 1; i <= num; i++) {
+
+    //value at home set to 0
+    let home = 0;
+
+    let away = 0;
+
+    //home and away = random inning function
+    home = inning();
+    away = inning();
+
+    homeTeam.push(home);
+    awayTeam.push(away);
+
+  }
+
+  //create home score varialble = home Team array reduced into one valu
+  //total hhom scores being added together
+  //score is the score being added to total score
+
+  let homeScore = homeTeam.reduce((totalHome, score) => {
+    return totalHome + score;
   }, 0);
 
-  awayTeam.reduce((innung, num) => {
-    awayTeam[0] = totalScore["Away"];
+  let awayScore = awayTeam.reduce((totalAway, score) => {
+    return totalAway + score;
   }, 0);
-
-};
-
-//why can't we say "If" when going through this loop return me a value of "home", then print to homeTeam, else print to Away
-//can we use innings.each to loop through inning scores?
-//can
-
-
-
+  totalScore.Home = homeScore;
+  totalScore.Away = awayScore;
+  return totalScore;
+}
+console.log(finalScore(inning, 9));
 
 /* Task 4: 
 
@@ -130,6 +148,35 @@ and returns the score at each pont in the game, like so:
 9th inning: awayTeam - homeTeam
 
 Final Score: awayTeam - homeTeam */
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
+
+function getInnings(inning) {
+  return {
+    home: inning(),
+    away: inning()
+  };
+};
+//callback ining num variab
+
+function scoreboard(getInnings, inning, num) {
+  //for loop to iterate the times specified
+  let homeTeam = 0;
+  let awayTeam = 0;
+  const results = [];
+
+  for (let i = 1; i <= num; i++) {
+    const currentinnings = getInnings(inning); //current inning random score
+    homeTeam += currentinnings.home; //targets home obj and adds score
+    awayTeam += currentinnings.away;
+    results.push(`${i + 1} inning: ${currentinnings.away} - ${currentinnings.home}`)
+  }
+
+  if (homeTeam === awayTeam) { //if team ties
+    results.push(`This game will require extra innings`)
+  } //push final score
+  else {
+    results.push(`Final Score: ${awayTeam} - ${homeTeam}`)
+  }
+  //return results
+  return results;
+} // ends function
+console.log(scoreboard(getInnings, inning, 9));
